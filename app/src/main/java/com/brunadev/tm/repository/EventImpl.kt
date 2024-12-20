@@ -6,10 +6,7 @@ import com.brunadev.tm.model.ResponseBody
 
 import io.reactivex.disposables.CompositeDisposable
 
-class EventImpl : Repository {
-
-    private val remoteDataSource = RemoteDataSource()
-    private val compositeDisposable = CompositeDisposable()
+class EventImpl(private val remoteDataSource: RemoteDataSource) : Repository {
 
     override suspend fun getEventsAPICoroutines(): ResponseBody =
         remoteDataSource.eventList(API_KEY)

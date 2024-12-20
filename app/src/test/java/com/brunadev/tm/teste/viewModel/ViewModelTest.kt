@@ -1,4 +1,4 @@
-package com.brunadev.tm
+package com.brunadev.tm.teste.viewModel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer

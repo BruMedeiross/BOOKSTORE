@@ -6,7 +6,7 @@ import com.brunadev.tm.repository.Repository
 import kotlinx.coroutines.launch
 
 
-class  MainViewModel(private val repository: Repository) : ViewModel(){
+class MainViewModel(private val repository: Repository) : ViewModel(){
 
     private val _listState = MutableLiveData<ResponseBody?>()
     val listState: LiveData<ResponseBody?> get() = _listState
@@ -24,8 +24,6 @@ class  MainViewModel(private val repository: Repository) : ViewModel(){
             _listState.value = responseAPI
         }
     }
-
-
 }
 
 
