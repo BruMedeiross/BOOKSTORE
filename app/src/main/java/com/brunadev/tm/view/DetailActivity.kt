@@ -4,8 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.format.DateFormat
 import com.brunadev.tm.databinding.ActivityDetailBinding
+import com.brunadev.tm.extensions.toDate
 import com.brunadev.tm.model.Events
-import com.brunadev.tm.utils.UtilDateFormat
 import com.brunadev.tm.viewmodel.DetailViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail.img_event
@@ -54,7 +54,7 @@ class DetailActivity : AppCompatActivity() {
         val data = eventSelected.dates?.start?.localDate ?: ""
         binding.eventData.text = DateFormat.format(
             "E MMMM dd,yyyy hh:mm a",
-            data.let { UtilDateFormat().dateFormat(it) }
+            data.toDate()
         )
         binding.eventLocation.text =
             eventSelected.classifications?.map { it.segment?.name }.toString()
