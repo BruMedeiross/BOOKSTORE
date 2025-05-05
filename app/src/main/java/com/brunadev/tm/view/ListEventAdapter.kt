@@ -28,19 +28,19 @@ class ListEventAdapter(private val listEvents: List<Events>, val onClick: (Event
     }
 
     inner class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(list: Events) {
+        fun bind(list: Events?) {
             with(itemView) {
                 setOnClickListener {
-                    onClick.invoke(list)
+                    list?.let { onClick.invoke(it) }
                 }
 
-                val img = list.images[0].url
+                val img = list?.images?.get(0)?.url
                 Picasso.get().load(img).into(img_event)
 
-                name_event.text = list.name
-                dates_event.text = list.dates.start.localDate
-                local_event.text = list.classifications.map { it.segment.name }.toString()
-                city_event.text = list.dates.timezone
+                name_event.text = list?.name ?: ""
+                dates_event.text = list?.dates?.start?.localDate ?: ""
+                local_event.text = list?.classifications?.map { it.segment?.name }.toString()
+                city_event.text = list?.dates?.timezone ?: ""
             }
         }
     }

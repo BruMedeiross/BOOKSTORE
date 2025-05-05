@@ -8,8 +8,8 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Public(
 
-    @SerializedName("startDateTime") var startDateTime: String? = "",
+    @SerializedName("startDateTime") var startDateTime: String? = null,
     @SerializedName("startTBD") var startTBD: Boolean? = false,
-    @SerializedName("endDateTime") var endDateTime: String? = ""
+    @SerializedName("endDateTime") var endDateTime: String? = null
 
 ):Parcelable

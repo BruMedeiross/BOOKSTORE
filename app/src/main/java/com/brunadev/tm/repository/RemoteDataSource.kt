@@ -1,7 +1,5 @@
 package com.brunadev.tm.repository
 
-
-import com.brunadev.tm.constant.EventConstants.API_KEY
 import com.brunadev.tm.model.ResponseBody
 import com.brunadev.tm.network.HttpClient
 

@@ -7,8 +7,8 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Dates (
 
-   @SerializedName("start") var start : Start,
-   @SerializedName("timezone") var timezone : String? = "",
-   @SerializedName("status") var status : Status
+   @SerializedName("start") var start : Start? = null,
+   @SerializedName("timezone") var timezone : String?  = null,
+   @SerializedName("status") var status : Status? = null
 
 ): Parcelable

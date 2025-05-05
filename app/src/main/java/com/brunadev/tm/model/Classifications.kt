@@ -8,7 +8,7 @@ import kotlinx.android.parcel.Parcelize
 data class Classifications(
 
     @SerializedName("primary") var primary: Boolean? = false,
-    @SerializedName("segment") var segment: Segment,
-    @SerializedName("genre") var genre: Genre,
-    @SerializedName("subGenre") var subGenre: SubGenre
+    @SerializedName("segment") var segment: Segment? = null,
+    @SerializedName("genre") var genre: Genre? = null,
+    @SerializedName("subGenre") var subGenre: SubGenre? = null
 ) : Parcelable

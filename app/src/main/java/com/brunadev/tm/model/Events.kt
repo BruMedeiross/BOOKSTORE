@@ -6,17 +6,17 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Events(
-    @SerializedName("name") var name: String? = "",
-    @SerializedName("type") var type: String? = "",
-    @SerializedName("id") var id: String? = "",
+    @SerializedName("name") var name: String? = null,
+    @SerializedName("type") var type: String? = null,
+    @SerializedName("id") var id: String?  = null,
     @SerializedName("test") var test: Boolean? = false,
-    @SerializedName("url") var url: String? = "",
-    @SerializedName("locale") var locale: String? = "",
-    @SerializedName("images") var images: List<Images>,
-    @SerializedName("sales") var sales: Sales,
-    @SerializedName("dates") var dates: Dates,
-    @SerializedName("classifications") var classifications: List<Classifications>,
-    @SerializedName("promoter") var promoter: Promoter,
-    @SerializedName("_links") var Links: Links
+    @SerializedName("url") var url: String? = null,
+    @SerializedName("locale") var locale: String?  = null,
+    @SerializedName("images") var images: List<Images>? = null,
+    @SerializedName("sales") var sales: Sales? = null,
+    @SerializedName("dates") var dates: Dates? = null,
+    @SerializedName("classifications") var classifications: List<Classifications>? = null,
+    @SerializedName("promoter") var promoter: Promoter? = null,
+    @SerializedName("_links") var Links: Links? = null
 ) : Parcelable
 

@@ -31,6 +31,10 @@ class DetailActivity : AppCompatActivity() {
         observeData()
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+    }
+
     private fun receiveIntent() {
 
         val eventSelected = intent.getParcelableExtra<Events?>(EVENT_DTO)
@@ -46,16 +50,16 @@ class DetailActivity : AppCompatActivity() {
 
     private fun setDetailData(eventSelected: Events) {
 
-        binding.eventTitle.text = eventSelected.name
-        val data = eventSelected.dates.start.localDate
+        binding.eventTitle.text = eventSelected.name ?: ""
+        val data = eventSelected.dates?.start?.localDate ?: ""
         binding.eventData.text = DateFormat.format(
             "E MMMM dd,yyyy hh:mm a",
-            data?.let { UtilDateFormat().dateFormat(it) }
+            data.let { UtilDateFormat().dateFormat(it) }
         )
         binding.eventLocation.text =
-            eventSelected.classifications.map { it.segment.name }.toString()
-        binding.eventType.text = eventSelected.classifications.map { it.genre.name }.toString()
-        val img = eventSelected.images[0].url
+            eventSelected.classifications?.map { it.segment?.name }.toString()
+        binding.eventType.text = eventSelected.classifications?.map { it.genre?.name }.toString()
+        val img = eventSelected.images?.get(0)?.url
         Picasso.get().load(img).into(img_event)
     }
 }

@@ -7,5 +7,5 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Status(
 
-    @SerializedName("code") var code: String? = ""
+    @SerializedName("code") var code: String?  = null
 ) : Parcelable

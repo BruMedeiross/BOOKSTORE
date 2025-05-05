@@ -1,31 +1,47 @@
 package com.brunadev.tm
 
+import androidx.test.ext.junit.rules.ActivityScenarioRule
+import com.brunadev.tm.view.MainActivity
+import org.junit.Rule
 import org.junit.Test
 
 class MainActivityTest {
 
+    @get:Rule
+    val activityRule = ActivityScenarioRule(MainActivity::class.java)
+
     @Test
-    fun givenHomeActivityWhenClickButtonCheckDisplayedItens() {
+    fun showHomeActivityClickListThenShowEventDetails() {
         withMainActivity {
-            launchEmptyActivity()
+            launchActivity()
         } actions {
-            clickAtSearchView()
+            clickList()
         } verify {
-            checkIsDisplayed()
-            checkAppName()
+            checkImageDetailIsDiplayed()
+            checkTitleDetailIsDiplayed()
         }
     }
 
 
     @Test
-    fun givenHomeActivityWhenClickEventCheckDisplayedItens() {
+    fun showHomeActivityScrollListThenCheckSearchViewIsDisplayed() {
         withMainActivity {
-            launchEmptyActivity()
+            launchActivity()
         } actions {
-            shimmerView()
-            scrollLayout()
+            scrollList()
+            Thread.sleep(2000)
         } verify {
-            checkDetailsIsDisplayed()
+            checkSearchViewIsDisplayed()
+        }
+    }
+
+    @Test
+    fun showHomeActivityThenCheckTextDisplayed() {
+        withMainActivity {
+            launchActivity()
+        } verify {
+            checkAppNameIsTextDisplayed()
+            checkViewIsTextNotDisplayed()
         }
     }
 }

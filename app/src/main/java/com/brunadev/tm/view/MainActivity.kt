@@ -63,11 +63,11 @@ class MainActivity : AppCompatActivity() {
             binding.shimmerList.isShimmerVisible
             hideKeyboard()
 
-            if (listEvents != null) {
+            if (!listEvents.isNullOrEmpty()) {
                 binding.shimmerList.visibility = View.GONE
                 binding.shimmerList.stopShimmer()
-                rvlist.visibility = View.VISIBLE
                 binding.txtNotFound.visibility = View.GONE
+                rvlist.visibility = View.VISIBLE
                 showProjects(listEvents)
             } else {
                 binding.shimmerList.visibility = View.GONE
@@ -78,21 +78,22 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun showProjects(list: List<Events>) {
+    private fun showProjects(list: List<Events>?) {
 
-        if (list.isNotEmpty()) {
+        if (!list.isNullOrEmpty()) {
             rvlist.adapter = ListEventAdapter(list) { item ->
                 setDetailView(item)
             }
         }
     }
 
-    private fun setDetailView(item: Events) {
-
-        val intent = Intent(this, DetailActivity::class.java).apply {
-            putExtra(DetailActivity.EVENT_DTO, item)
+    private fun setDetailView(item: Events?) {
+        if(item != null) {
+            val intent = Intent(this, DetailActivity::class.java).apply {
+                putExtra(DetailActivity.EVENT_DTO, item)
+            }
+            startActivity(intent)
         }
-        startActivity(intent)
     }
 
 }
